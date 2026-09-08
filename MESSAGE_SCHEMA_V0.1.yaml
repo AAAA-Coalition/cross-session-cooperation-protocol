@@ -1,0 +1,86 @@
+schema_version: 0.1
+object: c2c_message
+required:
+  - message_id
+  - correlation_id
+  - timestamp_utc
+  - sender_conversation_id
+  - recipient_conversation_id
+  - project_id
+  - message_type
+  - status
+  - priority
+  - subject
+  - source_files
+  - human_validation_required
+  - expected_response_path
+properties:
+  message_id:
+    type: string
+    pattern: '^MSG-[0-9]{4,}$'
+  correlation_id:
+    type: string
+    pattern: '^CORR-[0-9]{4,}$'
+  timestamp_utc:
+    type: string
+    format: date-time
+  sender_conversation_id:
+    type: string
+    pattern: '^conv-[a-z0-9-]+$'
+  recipient_conversation_id:
+    type: string
+    pattern: '^conv-[a-z0-9-]+$'
+  project_id:
+    type: string
+  message_type:
+    enum:
+      - REQUEST
+      - ACK
+      - RESPONSE
+      - DECISION_PROPOSAL
+      - DECISION_CONFIRMATION
+      - CONFLICT
+      - STATUS
+      - CLOSE
+  status:
+    enum:
+      - DRAFT
+      - SENT
+      - ACKNOWLEDGED
+      - IN_PROGRESS
+      - RESPONDED
+      - CLOSED
+      - BLOCKED
+      - REJECTED
+  priority:
+    enum: [LOW, MEDIUM, HIGH, CRITICAL]
+  subject:
+    type: string
+  source_files:
+    type: array
+    items:
+      type: string
+  requested_action:
+    type: array
+    items:
+      type: string
+  result:
+    type: array
+    items:
+      type: string
+  decision_constraints:
+    type: array
+    items:
+      type: string
+  expected_response_path:
+    type: string
+  human_validation_required:
+    type: boolean
+  supersedes_message_id:
+    type: [string, 'null']
+  responds_to_message_id:
+    type: [string, 'null']
+  evidence:
+    type: array
+    items:
+      type: string
