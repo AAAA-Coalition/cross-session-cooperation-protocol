@@ -1,5 +1,7 @@
 # Cross-Session Cooperation Protocol
 
+*[Shqip: [README_SQ.md](README_SQ.md)]*
+
 > Agents can exchange messages. The harder problem is making cooperation
 > survive the session.
 
