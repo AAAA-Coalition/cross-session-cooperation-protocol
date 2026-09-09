@@ -296,6 +296,7 @@ session must join the team.
   validation: no `git push` to shared material, no deployment, no message to a
   partner, and no deletion.
 - Never validate your own `human_validation_required` action.
+- European evaluation files must never be sent to an external API.
 
 ---
 
