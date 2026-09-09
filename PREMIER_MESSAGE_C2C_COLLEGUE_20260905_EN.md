@@ -32,9 +32,14 @@
 ## 1. Clone the Repository
 
 ```
-git clone <url-du-depot>
+git clone https://github.com/AAAA-Coalition/c2c-pilot-mailboxes.git
 cd <dossier-du-depot>
 ```
+
+> **This is the repository.** It is the one piece of information no tool can
+> guess, and its absence blocked everything else. The protocol you are reading
+> is public; **your messages go elsewhere**, into a private repository you are
+> a collaborator on. Writing there gives you access to nothing else.
 
 Write down the absolute path to this folder. You will need it at every step,
 and it is the most common source of errors.

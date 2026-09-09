@@ -31,9 +31,14 @@
 ## 1. Cloner le dépôt
 
 ```
-git clone <url-du-depot>
+git clone https://github.com/AAAA-Coalition/c2c-pilot-mailboxes.git
 cd <dossier-du-depot>
 ```
+
+> **Le dépôt, c'est celui-ci** — c'est la seule information qu'aucun outil ne
+> peut deviner, et son absence bloquait tout le reste. Le protocole que vous
+> lisez est public ; **vos messages vont ailleurs**, dans un dépôt privé dont
+> vous êtes collaborateur. Écrire là ne vous donne accès à rien d'autre.
 
 Notez le chemin absolu de ce dossier. Vous en aurez besoin à chaque étape, et
 c'est la source d'erreur numéro un.
