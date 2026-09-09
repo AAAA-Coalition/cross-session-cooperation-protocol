@@ -1,0 +1,17 @@
+# Fletë e shpejtë për zgjidhjen e problemeve C2C | C2C Quick Troubleshooting Card
+
+**Shqip në fillim — English alongside.** Përdoreni gjatë sesionit të 10 shtatorit 2026.  
+**Albanian first — English alongside.** Use during the 10 September 2026 session.
+
+| Shqip | English |
+|---|---|
+| **“E shkrova mesazhin, por askush nuk e sheh.”** Shkrimi i skedarit nuk e dërgon atë. Derisa të kryhet push-i, skedari ekziston vetëm në kompjuterin tuaj. **Veprimi:** kontrolloni me `git status`, pastaj përdorni `git push`. | **“I wrote my message, but nobody can see it.”** Writing the file does not send it. Until it is pushed, the file exists only on your computer. **Action:** check with `git status`, then run `git push`. |
+| **“Git nuk e pranon push-in tim.”** Zakonisht dikush tjetër ka bërë push para jush; kjo nuk është një avari. **Veprimi:** përdorni `git pull --rebase`, zgjidhni çdo konflikt, pastaj përdorni përsëri `git push`. **Mos përdorni kurrë `--force`.** | **“Git refuses my push.”** Someone else usually pushed before you; this is not an outage. **Action:** run `git pull --rebase`, resolve any conflict, then run `git push` again. **Never use `--force`.** |
+| **“Më dhanë qasje në GitHub, por nuk mund të shkruaj.”** Një ftesë e pa pranuar duket si qasje e dhënë për personin që e dërgoi. **Veprimi:** hapni email-in e ftesës dhe pranoni lidhjen e GitHub-it. | **“I was given GitHub access, but I cannot write.”** An unaccepted invitation looks like granted access to the person who sent it. **Action:** open the invitation email and accept the GitHub link. |
+| **“U përgjigja, por personi tjetër thotë se nuk mori asgjë.”** Një përgjigje pa `responds_to_message_id` nuk lidhet me kërkesën; kërkesa mbetet e hapur. **Veprimi:** dërgojeni përsëri përgjigjen duke përdorur identifikuesin e mesazhit fillestar në `responds_to_message_id`. | **“I replied, but the other person says nothing arrived.”** A response without `responds_to_message_id` is not linked to the request; the request remains open. **Action:** resend the response using the original message identifier in `responds_to_message_id`. |
+| **“Mesazhi u dërgua, por asgjë nuk ndodh.”** Një kuti postare C2C mund të zgjojë një sesion Claude Code, por jo një sesion ChatGPT. Ky është ndryshim platforme, jo defekt. **Veprimi:** për ChatGPT, kërkojini një personi ta hapë ose t'ia përcjellë mesazhin sesionit. | **“My message was sent, but nothing happens.”** A C2C mailbox can wake a Claude Code session, but not a ChatGPT session. This is a platform difference, not a defect. **Action:** for ChatGPT, ask a person to open or relay the message to the session. |
+| **“Kam të njëjtën detyrë si dikush tjetër.”** Personi që e filloi i pari e mban detyrën; mos redaktoni të njëjtin rezultat paralelisht. **Veprimi:** ndaloni punën tuaj dhe propozoni një rishikim të pavarur të punës ekzistuese. | **“I have the same task as someone else.”** The person who started first keeps the task; do not edit the same deliverable in parallel. **Action:** stop your version and offer an independent review of the existing work. |
+
+**Rregull sigurie | Safety rule:** Asnjëherë mos vendosni token, fjalëkalim ose çelës në Git, C2C ose pamje ekrani. | Never place a token, password or key in Git, C2C or a screenshot.
+
+**Nëse problemi vazhdon | If the problem continues:** shkruani simptomën, komandën e provuar dhe mesazhin e plotë të gabimit; mos shkruani vetëm “nuk punon”. | record the symptom, the command attempted and the complete error message; do not write only “it does not work”.
