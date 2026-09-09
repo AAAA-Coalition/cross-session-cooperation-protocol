@@ -314,6 +314,34 @@ EUACC*) and remains at the design stage.
 |---|---|---|
 | **1** | Telegram reception | zero installation, immediate value, expectations framed from the outset |
 | **1** | Google Drive | document sharing without technical skills |
+| **2** | C2C | the real working channel — requires understanding mailboxes and the registry |
+| **3** | SSH | only if the colleague operates a machine |
+| **4** | PC control MCP | only on their own machine and with their explicit agreement |
+| — | session-bridge | not useful for a remote colleague |
+| — | A2A | nothing to deploy |
+
+---
+
+# The Verification Standard That Applies to Every Channel
+
+Our internal scale, and the only row that matters:
+
+| Level | What it means |
+|---|---|
+| S0 | written |
+| S1 | connected |
+| S2 | **actually produces** locally |
+| S3 | **monitored** — a failure is visible |
+| **S4** | **received and usable by the recipient** |
+
+**A channel must not be announced to a colleague until it reaches S4.** On
+02/09, three components were at S2 — they really produced output — yet nothing
+arrived: the group mailboxes that nobody read, the silent-thread detector that
+nothing invoked, and LEAD02's channel whose configuration had not been applied
+to the running stack.
+
+> **In all three cases, a report saying “it produces” would have been accurate
+> and misleading.**
 
 ---
 
