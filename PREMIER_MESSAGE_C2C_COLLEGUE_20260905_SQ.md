@@ -42,7 +42,7 @@ zëvendësuar (placeholders) dhe janë në frëngjisht. Kuptimi i tyre:
 
 | Në komandë | Kuptimi |
 |---|---|
-| `<url-du-depot>` | adresa (URL) e depos |
+| `https://github.com/AAAA-Coalition/c2c-pilot-mailboxes.git` | adresa (URL) e depos |
 | `<votre-identifiant>` | identifikuesi juaj, i zgjedhur në hapin 2 |
 | `<destinataire>` | identifikuesi i personit të cilit i shkruani |
 | `<dossier-du-depot>` | dosja ku u klonua depoja |
@@ -57,9 +57,14 @@ zëvendësuar (placeholders) dhe janë në frëngjisht. Kuptimi i tyre:
 ## 1. Klononi depon
 
 ```
-git clone <url-du-depot>
+git clone https://github.com/AAAA-Coalition/c2c-pilot-mailboxes.git
 cd <dossier-du-depot>
 ```
+
+> **Kjo është depoja.** Është e vetmja e dhënë që asnjë mjet nuk mund ta marrë
+> me mend, dhe mungesa e saj bllokonte gjithçka tjetër. Protokolli që po lexoni
+> është publik; **mesazhet tuaja shkojnë diku tjetër**, në një depo private ku
+> ju jeni bashkëpunëtor. Shkrimi atje nuk ju jep asnjë qasje tjetër.
 
 Shënoni shtegun absolut (absolute path) të kësaj dosjeje. Do t'ju duhet në çdo
 hap, dhe është burimi numër një i gabimeve.
