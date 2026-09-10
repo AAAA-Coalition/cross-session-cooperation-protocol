@@ -92,6 +92,9 @@ h2{
   display:inline-block; padding:3px 8px; border:1px solid var(--line);
   background:var(--bg); color:var(--ink); word-break:break-all;
 }
+.addr{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.c2c{font-family:var(--mono);font-size:14px;font-weight:700;padding:4px 9px;border:1.5px solid var(--accent);color:var(--accent);background:var(--accent-soft);word-break:break-all}
+.gh{font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:3px 7px;border:1px solid var(--line);background:var(--bg)}
 .handle.unknown{color:var(--wait); border-color:var(--wait); background:var(--wait-soft)}
 .pill{
   font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.06em;
@@ -175,13 +178,14 @@ footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font
 </div>
 
 <h2>Everyone, and their next three steps</h2>
+<p style="margin:-4px 0 16px;font-size:14px;color:var(--muted);max-width:70ch">The <strong>orange address</strong> is where you are reached. To write to someone, put a file in <code>c2c-os/03_handoffs/mailboxes/&lt;their-address&gt;/inbox/</code> — their reply comes back to yours. The grey line is their GitHub account, only needed for access.</p>
 <div class="people">
 
   <article class="card">
     <header>
-      <div class="who"><span class="name">Ana Zacharian</span><span class="pill ok">access live</span></div>
+      <div class="who"><span class="name">Ana</span><span class="pill ok">access live</span></div>
       <div class="role">Albanian Skills · first project owner</div>
-      <div class="handle">anazacharian</div>
+      <div class="addr"><span class="c2c">conv-ana-01</span><span class="gh">github: anazacharian</span></div>
     </header>
     <ol class="todo">
       <li class="done">Invitation accepted at 16:56 Dublin — you are in.</li>
@@ -192,9 +196,9 @@ footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font
 
   <article class="card">
     <header>
-      <div class="who"><span class="name">Sindi Popshini</span><span class="pill ok">access live</span></div>
+      <div class="who"><span class="name">Sindi</span><span class="pill ok">access live</span></div>
       <div class="role">Candidate technical lead</div>
-      <div class="handle">sindipopshini22-commits</div>
+      <div class="addr"><span class="c2c">conv-sindi-01</span><span class="gh">github: sindipopshini22-commits</span></div>
     </header>
     <ol class="todo">
       <li class="done">Access confirmed — nothing to accept, nothing to install.</li>
@@ -205,9 +209,9 @@ footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font
 
   <article class="card">
     <header>
-      <div class="who"><span class="name">Sara Mjeshtri</span><span class="pill ok">access live</span></div>
+      <div class="who"><span class="name">Sara</span><span class="pill ok">access live</span></div>
       <div class="role">Candidate technical lead</div>
-      <div class="handle">saramjeshtri</div>
+      <div class="addr"><span class="c2c">conv-sara-01</span><span class="gh">github: saramjeshtri</span></div>
     </header>
     <ol class="todo">
       <li class="done">Access confirmed — nothing to accept, nothing to install.</li>
@@ -218,9 +222,9 @@ footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font
 
   <article class="card">
     <header>
-      <div class="who"><span class="name">Erisa Ahmeti</span><span class="pill ok">access live</span></div>
+      <div class="who"><span class="name">Erisa</span><span class="pill ok">access live</span></div>
       <div class="role">Participant</div>
-      <div class="handle">erisa03</div>
+      <div class="addr"><span class="c2c">conv-erisa-01</span><span class="gh">github: erisa03</span></div>
     </header>
     <ol class="todo">
       <li class="done">Invitation accepted this morning.</li>
@@ -231,9 +235,9 @@ footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font
 
   <article class="card">
     <header>
-      <div class="who"><span class="name">Ledjona Brako</span><span class="pill ok">access live</span></div>
+      <div class="who"><span class="name">Ledjona</span><span class="pill ok">access live</span></div>
       <div class="role">Participant</div>
-      <div class="handle">jonabrako</div>
+      <div class="addr"><span class="c2c">conv-ledjona-01</span><span class="gh">github: jonabrako</span></div>
     </header>
     <ol class="todo">
       <li class="done">Invitation accepted this morning.</li>
@@ -244,9 +248,9 @@ footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font
 
   <article class="card">
     <header>
-      <div class="who"><span class="name">Eralb Hoxha</span><span class="pill ok">access live</span></div>
+      <div class="who"><span class="name">Eralb</span><span class="pill ok">access live</span></div>
       <div class="role">Participant</div>
-      <div class="handle">Eralb17</div>
+      <div class="addr"><span class="c2c">conv-eralb-01</span><span class="gh">github: Eralb17</span></div>
     </header>
     <ol class="todo">
       <li class="done">Invitation accepted — checked at 15:40 Dublin, you are in.</li>
