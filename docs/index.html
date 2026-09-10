@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AAAA — Session board, 10 Sept</title>
+<style>
+:root{
+  --bg:#EEF1F3; --surface:#FFFFFF; --surface-2:#F7F9FA;
+  --ink:#161B22; --muted:#5A6672; --line:#D3DBE0;
+  --accent:#C2410C; --accent-soft:#FBEAE1;
+  --ok:#15803D; --ok-soft:#E3F3E8;
+  --wait:#B45309; --wait-soft:#FBF0DC;
+  --idle:#6B7785; --idle-soft:#EDF0F2;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12161A; --surface:#1A2026; --surface-2:#212930;
+    --ink:#E8EDF2; --muted:#94A3AF; --line:#2E3941;
+    --accent:#FB7A45; --accent-soft:#3A2118;
+    --ok:#4ADE80; --ok-soft:#16301F;
+    --wait:#FBBF24; --wait-soft:#332512;
+    --idle:#8A96A3; --idle-soft:#242C33;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12161A; --surface:#1A2026; --surface-2:#212930;
+  --ink:#E8EDF2; --muted:#94A3AF; --line:#2E3941;
+  --accent:#FB7A45; --accent-soft:#3A2118;
+  --ok:#4ADE80; --ok-soft:#16301F;
+  --wait:#FBBF24; --wait-soft:#332512;
+  --idle:#8A96A3; --idle-soft:#242C33;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px; margin:0 auto; padding:32px 20px 72px}
+
+/* ---------- masthead ---------- */
+.masthead{
+  display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between;
+  gap:16px; padding-bottom:18px; border-bottom:2px solid var(--ink); margin-bottom:28px;
+}
+h1{
+  margin:0; font-size:clamp(28px,4.4vw,44px); font-weight:800;
+  letter-spacing:-.025em; line-height:1.05; text-wrap:balance;
+}
+h1 small{display:block; font-size:.42em; font-weight:600; color:var(--muted); letter-spacing:0; margin-top:8px}
+.clock{font-family:var(--mono); font-size:13px; color:var(--muted); text-align:right; white-space:nowrap}
+.clock b{display:block; font-size:19px; color:var(--accent); letter-spacing:-.01em}
+
+/* ---------- lede ---------- */
+.lede{
+  background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--accent);
+  padding:16px 20px; margin-bottom:34px; max-width:66ch;
+}
+.lede p{margin:0 0 8px}
+.lede p:last-child{margin:0}
+
+/* ---------- the three shared steps ---------- */
+h2{
+  font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 14px; padding-bottom:8px; border-bottom:1px solid var(--line);
+}
+.steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:40px}
+.step{background:var(--surface); border:1px solid var(--line); padding:18px 18px 20px; position:relative}
+.step .n{
+  font-family:var(--mono); font-size:40px; font-weight:700; line-height:1;
+  color:var(--accent); letter-spacing:-.04em; display:block; margin-bottom:10px;
+}
+.step h3{margin:0 0 6px; font-size:17px; font-weight:700; letter-spacing:-.01em}
+.step p{margin:0; font-size:14px; color:var(--muted)}
+
+/* ---------- people ---------- */
+.people{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:16px}
+.card{
+  background:var(--surface); border:1px solid var(--line);
+  display:flex; flex-direction:column; overflow:hidden;
+}
+.card > header{padding:16px 18px 14px; border-bottom:1px solid var(--line); background:var(--surface-2)}
+.who{display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap}
+.name{font-size:19px; font-weight:700; letter-spacing:-.015em}
+.role{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-weight:600}
+.handle{
+  font-family:var(--mono); font-size:13px; margin-top:9px;
+  display:inline-block; padding:3px 8px; border:1px solid var(--line);
+  background:var(--bg); color:var(--ink); word-break:break-all;
+}
+.handle.unknown{color:var(--wait); border-color:var(--wait); background:var(--wait-soft)}
+.pill{
+  font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.06em;
+  padding:3px 8px; text-transform:uppercase; white-space:nowrap;
+}
+.pill.ok{color:var(--ok); background:var(--ok-soft)}
+.pill.wait{color:var(--wait); background:var(--wait-soft)}
+.pill.idle{color:var(--idle); background:var(--idle-soft)}
+ol.todo{margin:0; padding:16px 18px 18px 18px; list-style:none; counter-reset:s; flex:1}
+ol.todo li{
+  counter-increment:s; position:relative; padding-left:34px; margin-bottom:12px;
+  font-size:14.5px; line-height:1.5;
+}
+ol.todo li:last-child{margin-bottom:0}
+ol.todo li::before{
+  content:counter(s); position:absolute; left:0; top:1px;
+  font-family:var(--mono); font-size:12px; font-weight:700;
+  width:22px; height:22px; display:grid; place-items:center;
+  border:1.5px solid var(--accent); color:var(--accent);
+}
+ol.todo li.done{color:var(--muted)}
+ol.todo li.done::before{content:"✓"; border-color:var(--ok); color:var(--ok); background:var(--ok-soft)}
+code{font-family:var(--mono); font-size:.88em; background:var(--bg); padding:1px 5px; border:1px solid var(--line)}
+
+/* ---------- fallback ---------- */
+.rescue{
+  margin-top:44px; background:var(--accent-soft); border:1px solid var(--accent);
+  border-left-width:4px; padding:20px 22px;
+}
+.rescue h2{border-color:var(--accent); color:var(--accent)}
+.rescue ol{margin:0; padding-left:22px}
+.rescue li{margin-bottom:10px; max-width:74ch}
+.rescue li:last-child{margin-bottom:0}
+pre{
+  font-family:var(--mono); font-size:13px; background:var(--surface); color:var(--ink);
+  border:1px solid var(--line); padding:12px 14px; margin:10px 0 0; overflow-x:auto;
+}
+footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); max-width:74ch}
+@media (max-width:560px){ .wrap{padding:20px 14px 56px} .masthead{border-bottom-width:1px} .clock{text-align:left} }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+<div class="masthead">
+  <h1>Session board
+    <small>AAAA — cross-session cooperation, first deployment</small>
+  </h1>
+  <div class="clock">
+    Thursday 10 September 2026<br>
+    <b>16:00 Dublin</b>
+    15:00 UTC · 17:00 Tirana
+  </div>
+</div>
+
+<div class="lede">
+  <p><strong>This page is step 2.</strong> It exists so that nobody has to re-read anything. Find your name, do your three steps, stop.</p>
+  <p>If you come back to this page next week and remember nothing, that is fine — it was built for exactly that.</p>
+  <p style="font-size:14px;color:var(--muted)">Access re-checked at 16:56 Dublin: <strong>all six invitations accepted, none pending.</strong> Everyone works in <code>c2c-pilot-mailboxes</code> — the practice repository. Nothing you do tonight can touch anything else.</p>
+</div>
+
+<h2>What happens tonight</h2>
+<div class="steps">
+  <div class="step">
+    <span class="n">0</span>
+    <h3>Take an address</h3>
+    <p>Everyone picks a name and gets a mailbox. It is a name, not an email address.</p>
+  </div>
+  <div class="step">
+    <span class="n">1</span>
+    <h3>One real goal</h3>
+    <p>Ana presents the first project. “Improve our VPS” is an outcome, not a goal — so we start from something real.</p>
+  </div>
+  <div class="step">
+    <span class="n">2</span>
+    <h3>This page</h3>
+    <p>Who does what, and what comes next — one, two, three. Nothing else to hold in your head.</p>
+  </div>
+</div>
+
+<h2>Everyone, and their next three steps</h2>
+<div class="people">
+
+  <article class="card">
+    <header>
+      <div class="who"><span class="name">Ana Zacharian</span><span class="pill ok">access live</span></div>
+      <div class="role">Albanian Skills · first project owner</div>
+      <div class="handle">anazacharian</div>
+    </header>
+    <ol class="todo">
+      <li class="done">Invitation accepted at 16:56 Dublin — you are in.</li>
+      <li>Present the first project: <strong>the registration for the new edition</strong>. That is the real deadline this week, so that is the real goal.</li>
+      <li>Send us the description of the skills game you wrote with ChatGPT — no need to write it again.</li>
+    </ol>
+  </article>
+
+  <article class="card">
+    <header>
+      <div class="who"><span class="name">Sindi Popshini</span><span class="pill ok">access live</span></div>
+      <div class="role">Candidate technical lead</div>
+      <div class="handle">sindipopshini22-commits</div>
+    </header>
+    <ol class="todo">
+      <li class="done">Access confirmed — nothing to accept, nothing to install.</li>
+      <li>Write one message in your mailbox and wait for the reply. That is the whole exercise.</li>
+      <li>If it worked first time, say so — you may be asked to help another group do the same.</li>
+    </ol>
+  </article>
+
+  <article class="card">
+    <header>
+      <div class="who"><span class="name">Sara Mjeshtri</span><span class="pill ok">access live</span></div>
+      <div class="role">Candidate technical lead</div>
+      <div class="handle">saramjeshtri</div>
+    </header>
+    <ol class="todo">
+      <li class="done">Access confirmed — nothing to accept, nothing to install.</li>
+      <li>Write one message in your mailbox and wait for the reply.</li>
+      <li>If it worked first time, say so — you may be asked to help another group do the same.</li>
+    </ol>
+  </article>
+
+  <article class="card">
+    <header>
+      <div class="who"><span class="name">Erisa Ahmeti</span><span class="pill ok">access live</span></div>
+      <div class="role">Participant</div>
+      <div class="handle">erisa03</div>
+    </header>
+    <ol class="todo">
+      <li class="done">Invitation accepted this morning.</li>
+      <li>Write one message in your mailbox and wait for the reply.</li>
+      <li>Tell us the one thing that was confusing. That is more useful to us than “it worked”.</li>
+    </ol>
+  </article>
+
+  <article class="card">
+    <header>
+      <div class="who"><span class="name">Ledjona Brako</span><span class="pill ok">access live</span></div>
+      <div class="role">Participant</div>
+      <div class="handle">jonabrako</div>
+    </header>
+    <ol class="todo">
+      <li class="done">Invitation accepted this morning.</li>
+      <li>Write one message in your mailbox and wait for the reply.</li>
+      <li>Tell us the one thing that was confusing.</li>
+    </ol>
+  </article>
+
+  <article class="card">
+    <header>
+      <div class="who"><span class="name">Eralb Hoxha</span><span class="pill ok">access live</span></div>
+      <div class="role">Participant</div>
+      <div class="handle">Eralb17</div>
+    </header>
+    <ol class="todo">
+      <li class="done">Invitation accepted — checked at 15:40 Dublin, you are in.</li>
+      <li>Write one message in your mailbox and wait for the reply.</li>
+      <li>You wrote to us twice yesterday and got no answer for a day. Sorry about that — tonight the reply comes back in seconds.</li>
+    </ol>
+  </article>
+
+  <article class="card">
+    <header>
+      <div class="who"><span class="name">James</span><span class="pill idle">to confirm</span></div>
+      <div class="role">Participant</div>
+      <div class="handle unknown">GitHub name — not known to us yet</div>
+    </header>
+    <ol class="todo">
+      <li>Tell us your GitHub name so an invitation can be sent.</li>
+      <li>Accept the invitation.</li>
+      <li>Write one message and wait for the reply.</li>
+    </ol>
+  </article>
+
+  <article class="card">
+    <header>
+      <div class="who"><span class="name">John V</span><span class="pill ok">owner</span></div>
+      <div class="role">Coalition · convener</div>
+      <div class="handle">JohnV-AAAA</div>
+    </header>
+    <ol class="todo">
+      <li>Run steps 0 → 1 → 2 above.</li>
+      <li>Announce the open call for adoption — deliberately delayed one to two weeks, until there is a site to point at.</li>
+      <li>Name who becomes a technical lead. Tonight is where that is decided, by what people actually do.</li>
+    </ol>
+  </article>
+
+</div>
+
+<div class="rescue">
+  <h2>If something does not work</h2>
+  <ol>
+    <li><strong>Silence is not always rejection.</strong> Three times this week a message looked ignored when it had simply never been delivered. Check the channel before assuming the person.</li>
+    <li><strong>After you send, confirm it actually left.</strong> Thirty seconds, and it tells you which of the two problems you have:
+      <pre>git log origin/main -1 --oneline</pre>
+    </li>
+    <li><strong>Nothing here is urgent enough to rush.</strong> If a step fails tonight, it gets fixed tomorrow. The infrastructure is frozen until 16:00 precisely so that nothing changes underneath us during the session.</li>
+  </ol>
+</div>
+
+<footer>
+  <p>Built for the session of 10 September 2026. Two names are still missing and are marked as such rather than guessed. Times are given in Dublin time with UTC alongside — a line that said “14:00 UTC” instead of “14:00 Dublin” cost two people an hour of confusion this morning, so we no longer write bare times.</p>
+</footer>
+
+</div>
+
+</body>
+</html>
