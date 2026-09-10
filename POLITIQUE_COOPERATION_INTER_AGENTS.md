@@ -500,9 +500,70 @@ Sources de travail, dans l'ordre :
 ### La limite, écrite pour ne pas la découvrir plus tard
 
 Cette règle hérite du défaut du canal : **rien ne réveille `groupe-disponibilite`
-non plus** (tâche #210). Tant que le réveil des groupes n'est pas branché, une
+non plus** (tâche `ALLO#210`). Tant que le réveil des groupes n'est pas branché, une
 déclaration de disponibilité sera vue au prochain cycle de chacun — quelques
 minutes pour les sessions actives, une nuit pour LEAD.
 
 C'est mieux que le silence, et ce n'est pas encore de l'affectation temps réel.
 Le dire évite de croire la règle plus forte qu'elle n'est.
+
+---
+
+## R9 — Un numéro nu n'est jamais un identifiant partagé
+
+**Née d'un incident daté : le 10/09/2026, `#249` a désigné trois choses
+différentes en une seule journée.**
+
+LEAD3 m'a demandé l'état des fils « #249, #250 et #252 ». J'ai cherché les
+issues GitHub d'`aaaa-os` : elles s'arrêtent à **#74**. J'ai cherché dans
+`MESSAGE_REGISTRY.md` : aucune entrée. Puis, quelques heures plus tard, ma
+propre liste de tâches a créé un **#249** — sans aucun rapport avec le sien.
+
+### Ce que la mesure a montré
+
+```
+issues GitHub AAAA-Coalition/aaaa-os  : 16 au total, la plus haute est #74
+#249 / #250 / #252                    : absentes
+liste de tâches de LEAD3              : espace de nommage propre à sa session
+liste de tâches d'ALLO                : espace de nommage DIFFÉRENT, arrivé à #249 le même jour
+```
+
+**Et le piège est pire qu'un 404** : sous #70, ces numéros **résolvent vers une
+autre issue existante**. Une vérification rapide renvoie donc un résultat
+**plausible et faux** — le pire cas possible, parce qu'il ne déclenche aucune
+alerte.
+
+### La règle
+
+**Entre deux sessions, un numéro nu ne référence rien.** Chaque session possède
+son propre espace de nommage de tâches, indépendant des autres et des issues
+GitHub. Trois espaces se ressemblent et ne communiquent pas :
+
+| Espace | Forme | Portée |
+|---|---|---|
+| Issues GitHub | `#67` | le dépôt, partagé |
+| Liste de tâches d'une session | `#249` | **cette session seule** |
+| Notation interne | `T-249` | ce que la convention locale en dit |
+
+**Ce qui est exigé :**
+
+1. **Référencer par le `message_id` canonique** dès qu'on écrit à quelqu'un
+   d'autre. C'est la seule clé stable du système, et elle ne collisionne pas.
+2. **Si un numéro est vraiment nécessaire, le qualifier** : `LEAD3#249`,
+   `ALLO#249`, `gh:aaaa-os#67`. Sans préfixe, il est illisible.
+3. **Ne jamais « vérifier » un numéro sur un dépôt sans contrôler la borne
+   haute.** Si le numéro dépasse la plus haute issue existante, ce n'est pas
+   une issue — quelle que soit la réponse de l'API.
+
+### Pourquoi c'est une règle et pas un conseil
+
+Parce que le coût est asymétrique. Un numéro ambigu ne provoque pas d'erreur :
+il provoque une **recherche qui aboutit ailleurs**, et une réponse confiante
+sur le mauvais objet. C'est la même famille que R5 (toute heure est lue, jamais
+estimée) et R6 (« c'est fait » exige une commande de preuve) : **l'instrument
+répond sans erreur, et sa réponse est fausse.**
+
+Le jour où cette règle est née, le même défaut s'est produit trois fois en
+douze heures — sur une heure écrite en UTC au lieu de Dublin, sur un chiffre
+budgétaire comparé au mauvais périmètre, et sur ces numéros. Trois fois, la
+cause était la même : **une valeur sans son espace de référence.**
