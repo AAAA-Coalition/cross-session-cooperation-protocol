@@ -567,3 +567,87 @@ Le jour où cette règle est née, le même défaut s'est produit trois fois en
 douze heures — sur une heure écrite en UTC au lieu de Dublin, sur un chiffre
 budgétaire comparé au mauvais périmètre, et sur ces numéros. Trois fois, la
 cause était la même : **une valeur sans son espace de référence.**
+
+---
+
+## R10 — Les arbitrages humains vivent dans un registre, pas dans la tête des sessions
+
+**Ajoutée le 11/09/2026**, après que l'humain du projet a dû écrire :
+
+> *« informez-vous entre vous de ce genre de choses — je ne dois pas être votre
+> gateway belt assistant de coordination »*
+
+Il avait raison, et la cause n'était ni la paresse ni un défaut de politesse :
+**il n'existait aucun endroit partagé où vivaient les arbitrages ouverts.**
+Chaque session tenait son propre compte, les comptes divergeaient — une session
+en a annoncé quatre puis trois le même jour — et le seul point où ils se
+réconciliaient était l'humain lui-même. Il est devenu le registre partagé que
+personne n'avait écrit.
+
+Le compteur automatique ne pouvait pas combler le trou : il comptait les
+messages portant `human_validation_required: true`, mais **le schéma C2C n'a
+aucun champ de résolution**. Un arbitrage tranché restait compté comme ouvert
+indéfiniment. Un compteur qui ne sait pas décrémenter ne mesure rien.
+
+### Un fichier unique, avec les tranchés dedans
+
+Versionné dans le dépôt canonique, portant les arbitrages **ouverts et
+tranchés**. Les deux, parce que « qu'est-ce qui reste ? » et « qu'est-ce qui a
+déjà été décidé ? » sont la même question — et c'est la seconde qui revient le
+plus souvent vers l'humain.
+
+Chez AAAA : `c2c-os/02_operational_registers/ARBITRAGES_HUMAINS.md`.
+
+### Quatre états, et pas un de plus
+
+| État | Sens |
+|---|---|
+| `OPEN` | attend une décision humaine |
+| `DECIDED` | un humain a tranché, preuve citée — **l'exécution peut rester à faire** |
+| `EXTERNAL_DECISION` | la décision appartient à quelqu'un hors du périmètre |
+| `CLOSED` | décidé **et** exécuté, avec preuve d'exécution |
+
+Champs obligatoires : `owner`, état, date, **preuve ou source de la décision**,
+périmètre, dépendance s'il y en a une. Et sur toute ligne `CLOSED`, un champ
+**`outcome`** portant l'usage réellement mesuré — parce que `CLOSED` sera lu
+comme « ça marche » alors qu'il ne dit que « c'est livré ».
+
+**`DECIDED` n'est pas `CLOSED`.** Une décision prise dont l'exécution reste à
+faire cesse d'être suivie dès qu'on la classe close.
+
+### Les verbes permis
+
+**Une session peut** créer une ligne, l'enrichir d'une mesure, la reclasser
+quand un fait le justifie, et **proposer** une clôture.
+
+**Une session ne peut pas clore** — jamais, même avec une excellente
+justification. Une clôture exige une preuve de décision humaine qualifiée :
+qui, où, quand.
+
+**Et ceci, enfreint le jour même où la règle a été écrite :** déclarer qu'une
+question *n'est pas* un arbitrage la clôt aussi sûrement que la cocher. Le
+11/09 à 09:17 UTC, une session a inscrit que le staffing d'un guichet
+d'accueil n'était pas un arbitrage humain ; un audit indépendant a établi le
+contraire deux heures plus tard. **Reclasser hors périmètre est une forme de
+clôture, et tombe sous la même interdiction.**
+
+### Trois obligations de lecture
+
+- avant d'écrire « il reste N arbitrages » → **lire le registre** ;
+- avant d'écrire « c'est déjà couvert » → **nommer le périmètre exactement
+  mesuré**. Un « déjà satisfait » qui ne dit pas ce qu'il a vérifié se lit
+  comme « tout est couvert » ;
+- avant d'écrire « envoyé » ou « poussé » → **vérifier sur `origin`**.
+
+### Pourquoi le document ne suffit pas
+
+**Une convention ne protège rien tant qu'elle n'est pas dans le chemin
+d'exécution.** Ce registre a été enfreint par son propre auteur moins de deux
+heures après sa rédaction, et ce n'est pas lui qui l'a détecté — c'est une
+autre session.
+
+Un fichier que rien n'oblige à lire est de la documentation. Le rendre
+mécanique, par un rappel automatique à chaque tour, est ce qui le transforme en
+gouvernance. Avec une contrainte stricte : **ce mécanisme lit et affiche, il
+n'écrit jamais un état.** Un automate qui modifierait le registre serait une
+session qui clôt sans preuve, par un autre chemin.
