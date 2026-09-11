@@ -71,7 +71,7 @@ le protocole, pas seulement dans une charte à côté.
 | **Les politiques de coopération** | `POLITIQUE_COOPERATION_INTER_AGENTS.md`, `POLITIQUE_COMMUNICATION.md`, `PARALLEL_EXECUTION_POLICY_V0.1.md`, `THREAD_PARALLEL_EXECUTION_POLICY_V0.1.md`, `PARALLELISM_MAXIMIZATION_RULE_V1.0.md`, `MULTI_SESSION_COORDINATION_GUIDE_V1.0.md` | Qui écrit où, comment répartir le travail entre sessions sans collision, comment paralléliser sans se marcher dessus |
 | **La charte de comportement** | `CLAUDE_BEHAVIOR_CHARTER_V1.1.md` (+ `_EN.md`) | Ce qu'un agent s'engage à faire et ne pas faire dans ce système — le socle du human-in-the-loop |
 | **Les rôles** | `ROLE_DES_BOTS_AAAA_OS_20260904.md` | Qui fait quoi entre les bots et les sessions, et une leçon opérationnelle sur les secrets en historique Git (voir ci-dessous) |
-| **L'accueil, en trois langues** | `PREMIER_MESSAGE_C2C_COLLEGUE_20260905.md` (+ `_SQ.md`, albanais), `COLLEAGUE_ONBOARDING_PROCESS_V1.1.md` (+ `_EN.md`), `TUTORIEL_COLLEGUES_20260905.md` (+ `_EN.md`), `TUTORIEL_DEPLOIEMENT_CANAUX_20260903.md`, `GUIDE_CANAUX_COMMUNICATION.md`, `PILOTER_SA_SESSION_CLAUDE_EN_C2C_20260905.md`, `TUTO_COOPERATION_PARALLELE.md` | Comment une personne novice envoie son premier message et reçoit une réponse |
+| **L'accueil, en trois langues** | `PREMIER_MESSAGE_C2C_COLLEGUE_20260905.md` (+ `_SQ.md`, albanais), `COLLEAGUE_ONBOARDING_PROCESS_V1.1.md` (+ `_EN.md`), `TUTORIEL_COLLEGUES_20260905.md` (+ `_EN.md`), `TUTORIEL_DEPLOIEMENT_CANAUX_20260903.md`, `GUIDE_CANAUX_COMMUNICATION.md`, `PILOTER_SA_SESSION_CLAUDE_EN_C2C_20260905.md`, `TUTO_COOPERATION_PARALLELE.md`, `FICHE_DEPANNAGE_C2C_SQ_EN.md` (albanais-anglais) | Comment une personne novice envoie son premier message et reçoit une réponse |
 
 ## Le tutorat, pas une métaphore
 
@@ -178,6 +178,7 @@ to read with a dictionary.
 | `CLAUDE_BEHAVIOR_CHARTER_V1.1_EN.md` | what an agent may and may not do on its own |
 | `COLLEAGUE_ONBOARDING_PROCESS_V1.1_EN.md` | bringing a new human into the protocol |
 | `TUTORIEL_COLLEGUES_20260905_EN.md` | the colleague-facing walkthrough |
+| `FICHE_DEPANNAGE_C2C_SQ_EN.md` | one-screen troubleshooting card for the six most common onboarding failures, Albanian and English side by side |
 | `MESSAGE_SCHEMA_V0.1.yaml` | the message format itself — language-neutral |
 
 **French only, for now**: the cooperation policies, the channel guides, the
