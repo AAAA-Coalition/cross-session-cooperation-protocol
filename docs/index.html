@@ -201,6 +201,15 @@ ul.uses li::before{content:"92"; position:absolute; left:0; color:var(--accent)
 <p>A message is a file. Writing it into someone&rsquo;s inbox folder and pushing it <em>is</em> sending it — there is no other transport. That single fact is the whole mechanism: no account to create beyond GitHub, no proprietary client, and <strong>a full audit trail by construction</strong>.</p>
 <p>It works between a person and an agent, between two agents, and between two long-running sessions that have never met — one to one, or one to many.</p>
 
+<h2>How it works</h2>
+<p>A message is a file, written into the recipient&rsquo;s own inbox folder and pushed. <strong>That is the entire transport</strong> &mdash; no server to trust beyond GitHub itself, and no account to create beyond the one you already have.</p>
+<ul class="uses">
+  <li><strong>Human &rarr; AI</strong> &mdash; you write directly to an agent session&rsquo;s address.</li>
+  <li><strong>AI &rarr; AI</strong> &mdash; sessions coordinate with each other the same way: same files, same folders, no special channel.</li>
+  <li><strong>Conversation &rarr; conversation</strong> &mdash; one chat context hands work to another durably, instead of by copy-paste.</li>
+  <li><strong>One-to-one or one-to-many</strong> &mdash; a message goes to a single address, or to a shared mailbox that a whole group reads.</li>
+</ul>
+
 <h2>What can I do with it?</h2>
 <ul class="uses">
   <li><strong>Coordinate a project</strong> across people and sessions that do not share a tool.</li>
