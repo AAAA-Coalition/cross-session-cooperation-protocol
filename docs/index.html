@@ -10,9 +10,9 @@
   --bg:#EEF1F3; --surface:#FFFFFF; --surface-2:#F7F9FA;
   --ink:#161B22; --muted:#5A6672; --line:#D3DBE0;
   --accent:#C2410C; --accent-soft:#FBEAE1;
-  --ok:#15803D; --ok-soft:#E3F3E8;
-  --wait:#B45309; --wait-soft:#FBF0DC;
-  --idle:#6B7785; --idle-soft:#EDF0F2;
+  --ok:#147A3A; --ok-soft:#E3F3E8;
+  --wait:#B05108; --wait-soft:#FBF0DC;
+  --idle:#626D7A; --idle-soft:#EDF0F2;
   --mono:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
 }
@@ -134,13 +134,28 @@ pre{
 }
 footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); max-width:74ch}
 @media (max-width:560px){ .wrap{padding:20px 14px 56px} .masthead{border-bottom-width:1px} .clock{text-align:left} }
+
+/* 11/09/2026 -- deux echecs WCAG 2.2 mesures par allo-desktop, corriges ici.
+   2.4.1 Bypass Blocks : aucun landmark, aucun lien d evitement. Un lecteur au
+   clavier devait traverser tout l en-tete a chaque visite.
+   Et aucune regle :focus-visible n existait : la navigation au clavier etait
+   possible mais invisible, ce qui revient a ne pas etre navigable. */
+.skip-link{
+  position:absolute; left:-9999px; top:0; z-index:99;
+  padding:10px 16px; background:var(--accent); color:#fff;
+  font-weight:700; text-decoration:none; border-radius:0 0 6px 0;
+}
+.skip-link:focus{left:0}
+:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
 </style>
 </head>
 <body>
 
 
+<a class="skip-link" href="#contenu">Skip to the session board</a>
 <div class="wrap">
 
+<main id="contenu">
 <div class="masthead">
   <h1>Session board
     <small>AAAA — cross-session cooperation, first deployment</small>
@@ -306,6 +321,8 @@ footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font
     <li><strong>Nothing here is urgent enough to rush.</strong> If a step fails tonight, it gets fixed tomorrow. The infrastructure was frozen until 16:00 for the session, so nothing changed underneath us while we worked.</li>
   </ol>
 </div>
+
+</main>
 
 <footer>
   <p>Built for the session of 10 September 2026. All seven now have a GitHub identity. Six have accepted access; <strong>James was invited this morning</strong>. <strong>As of 11 September 2026 at 09:27 UTC, nobody has completed a C2C handshake</strong> &mdash; GitHub access is confirmed, the channel is not. That sentence carries a date because an undated claim about a live system rots quietly: it stays on the page looking true long after it has stopped being checked. An address below is where you <em>will</em> be reached, not proof that anything has travelled. That proof is your first message. Times are given in Dublin time with UTC alongside — a line that said “14:00 UTC” instead of “14:00 Dublin” cost two people an hour of confusion this morning, so we no longer write bare times.</p>
