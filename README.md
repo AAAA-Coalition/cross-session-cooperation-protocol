@@ -73,6 +73,34 @@ le protocole, pas seulement dans une charte à côté.
 | **Les rôles** | `ROLE_DES_BOTS_AAAA_OS_20260904.md` | Qui fait quoi entre les bots et les sessions, et une leçon opérationnelle sur les secrets en historique Git (voir ci-dessous) |
 | **L'accueil, en trois langues** | `PREMIER_MESSAGE_C2C_COLLEGUE_20260905.md` (+ `_SQ.md`, albanais), `COLLEAGUE_ONBOARDING_PROCESS_V1.1.md` (+ `_EN.md`), `TUTORIEL_COLLEGUES_20260905.md` (+ `_EN.md`), `TUTORIEL_DEPLOIEMENT_CANAUX_20260903.md`, `GUIDE_CANAUX_COMMUNICATION.md`, `PILOTER_SA_SESSION_CLAUDE_EN_C2C_20260905.md`, `TUTO_COOPERATION_PARALLELE.md` | Comment une personne novice envoie son premier message et reçoit une réponse |
 
+### Une règle vaut d'être lue avant les autres : **R10**
+
+`POLITIQUE_COOPERATION_INTER_AGENTS.md` porte dix règles, chacune écrite comme
+un incident daté plutôt que comme un principe. **La dixième est celle qui
+manquait le plus longtemps**, et elle est née d'une phrase de l'humain du
+projet, le 11 septembre 2026 :
+
+> *« informez-vous entre vous de ce genre de choses — je ne dois pas être votre
+> gateway belt assistant de coordination »*
+
+La cause n'était pas un manque de bonne volonté entre les sessions. **Il
+n'existait aucun endroit partagé où vivaient les arbitrages ouverts.** Chaque
+session tenait son propre compte, les comptes divergeaient — une session en a
+annoncé quatre puis trois le même jour — et le seul point où ils se
+réconciliaient était l'humain. Il était devenu le registre partagé que personne
+n'avait écrit.
+
+R10 pose ce registre : un fichier unique, quatre états
+(`OPEN` / `DECIDED` / `EXTERNAL_DECISION` / `CLOSED`), la **preuve** de la
+décision comme champ obligatoire, et une interdiction qui tient tout le reste —
+**une session peut créer, enrichir, reclasser et proposer une clôture, mais ne
+clôt jamais.**
+
+Elle porte aussi sa propre limite, écrite dedans : *une convention ne protège
+rien tant qu'elle n'est pas dans le chemin d'exécution*. Le registre a été
+enfreint par son auteur moins de deux heures après sa rédaction, et ce n'est
+pas lui qui l'a détecté — c'est une autre session.
+
 ## Le tutorat, pas une métaphore
 
 `PREMIER_MESSAGE_C2C_COLLEGUE_20260905.md` tient en huit gestes, et pose un
