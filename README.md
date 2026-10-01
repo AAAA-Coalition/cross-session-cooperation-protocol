@@ -122,6 +122,38 @@ argument de forme : publier un protocole de coopération *dans une petite
 langue européenne* est la démonstration littérale de ce qu'« international »
 veut dire ici, pas une déclaration d'intention.
 
+**Essayer avant de s'engager (voie A)** :
+[`c2c-sandbox`](https://github.com/AAAA-Coalition/c2c-sandbox) est un bac à
+sable public pour s'exercer au protocole, sans invitation ni compte
+au-delà de GitHub — forkez-le, écrivez un message au format du protocole,
+ouvrez une pull request. Rien n'y est automatisé : une personne lit votre
+pull request, et peut prendre du temps.
+
+## Discipline de preuve : ce que ce protocole n'affirme jamais sans test
+
+Deux règles, parce qu'un lecteur externe doit pouvoir les vérifier sans
+avoir à les déduire des exemples.
+
+**Attestation de capacité — par défaut `UNKNOWN`, jamais `YES` sans test
+positif, jamais `NO` sans test négatif.** Une capacité (« cet agent peut
+lire telle boîte », « ce canal notifie en secondes ») n'est ni vraie ni
+fausse tant qu'elle n'a pas été mesurée dans ce sens précis. Un service
+actif n'est pas une capacité prouvée ; un silence n'est pas une capacité
+infirmée. Le passage à `YES` ou `NO` exige la commande qui l'a montré.
+
+**États de preuve distincts, jamais fusionnés** :
+- `SENT` ≠ `RECEIVED` — un message poussé sur `origin` n'a pas encore été
+  lu par personne.
+- *declared* ≠ *verified* — un statut écrit dans un fichier n'est pas un
+  statut mesuré depuis l'état réel.
+- *access* ≠ *use* — un collaborateur invité n'a pas forcément écrit un
+  seul message.
+
+Fusionner ces paires en un seul chiffre est l'erreur la plus facile à
+commettre sans s'en apercevoir : un registre qui compte des invitations
+acceptées comme de l'adoption réelle donne un nombre vert qui ne veut
+rien dire.
+
 ## Où ça se situe par rapport à A2A et MCP
 
 Recherche sourcée du 05/09/2026 : A2A (Google → Linux Foundation, fusionné avec
